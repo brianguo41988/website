@@ -1,14 +1,20 @@
-
 const express = require('express');
-
+const path = require('path');
 const app = express();
+console.log("require is working");
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
 
-var PORT = process.env.PORT || 5000;
+app.get('/1', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index1.html'));
+});
 
-app.get('/', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
+app.get('/buttonclick.js', function (req, res) {
+    res.sendfile(__dirname + '/buttonclick.js');
   });
-  app.get('/hi', function (req, res) {
-    res.sendfile(__dirname + '/index.html');
-  });
-console.log("Entered");
+
+const PORT = process.env.PORT || 5000;
+
+
+app.listen(PORT, () => console.log(`Sever started on port ${PORT}`));
