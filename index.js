@@ -3,8 +3,6 @@ const path = require('path');
 const app = express();
 console.log("require is working");
 
-app.use('/static', express.static(path.join(__dirname, 'public')))
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
@@ -15,6 +13,10 @@ app.get('/1', (req, res) => {
 
 app.get('/buttonclick.js', function (req, res) {
     res.sendfile(__dirname + '/buttonclick.js');
+  });
+
+app.get('/index.css', function (req, res) {
+    res.sendfile(__dirname + '/index.css');
   });
 
 
